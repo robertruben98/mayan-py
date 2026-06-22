@@ -3,13 +3,16 @@
 from __future__ import annotations
 
 from ._transport import RateLimit
+from .client import AsyncMayanClient, MayanClient
 from .exceptions import MayanAPIError, MayanError, MayanRateLimitError
 from .models import Quote, QuoteResponse, SwapStatus, Token
 
 __version__ = "0.1.0"
 
 __all__ = [
+    "AsyncMayanClient",
     "MayanAPIError",
+    "MayanClient",
     "MayanError",
     "MayanRateLimitError",
     "Quote",
