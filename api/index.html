@@ -1,0 +1,4334 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python client for the Mayan Finance API — cross-chain swap and bridge across Solana, EVM and Sui. Sync + async, Pydantic v2.">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>API reference - mayan-py</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="mayan-py" class="md-header__button md-logo" aria-label="mayan-py" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            mayan-py
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/robertruben98/mayan-py" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robertruben98/mayan-py
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="mayan-py" class="md-nav__button md-logo" aria-label="mayan-py" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    mayan-py
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/robertruben98/mayan-py" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robertruben98/mayan-py
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mayan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mayan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mayan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.RateLimit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RateLimit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AsyncMayanClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AsyncMayanClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.rate_limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rate_limit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.__aenter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aenter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.__aexit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aexit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_quotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quotes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.list_swaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list_swaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.poll_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        poll_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MayanClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.rate_limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rate_limit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.__enter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __enter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.__exit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __exit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_quotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quotes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.list_swaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list_swaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.poll_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        poll_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanAPIError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanAPIError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MayanAPIError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanAPIError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanRateLimitError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanRateLimitError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MayanRateLimitError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanRateLimitError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.Quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.QuoteResponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SwapStatus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SwapStatus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus.is_completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_completed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus.is_refunded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_refunded
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus.is_terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.Token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mayan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mayan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mayan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.RateLimit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RateLimit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AsyncMayanClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AsyncMayanClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.rate_limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rate_limit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.__aenter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aenter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.__aexit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aexit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_quotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quotes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.get_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.list_swaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list_swaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.AsyncMayanClient.poll_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        poll_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MayanClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.rate_limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rate_limit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.__enter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __enter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.__exit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __exit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_quotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quotes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_quote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.get_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.list_swaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list_swaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanClient.poll_swap_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        poll_swap_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanAPIError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanAPIError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MayanAPIError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanAPIError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanRateLimitError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MayanRateLimitError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MayanRateLimitError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.MayanRateLimitError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.Quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.QuoteResponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SwapStatus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SwapStatus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus.is_completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_completed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus.is_refunded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_refunded
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.SwapStatus.is_terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mayan.Token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-reference">API reference</h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="mayan" class="doc doc-heading">
+            <code>mayan</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>mayan-py: a Python client for the Mayan Finance API (cross-chain swap/bridge).</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.RateLimit" class="doc doc-heading">
+            <code>RateLimit</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Snapshot of any rate-limit headers from the last response.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.AsyncMayanClient" class="doc doc-heading">
+            <code>AsyncMayanClient</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Asynchronous client for the Mayan Finance API.</p>
+<p>A coroutine-based mirror of :class:<code>MayanClient</code> with identical endpoints,
+parameters and return types. Use it as an async context manager so the
+underlying HTTP connections are closed on exit.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>import asyncio
+async def main():
+...     async with AsyncMayanClient() as client:
+...         return await client.get_tokens(chain="solana")
+tokens = asyncio.run(main())  # doctest: +SKIP</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="mayan.AsyncMayanClient.rate_limit" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">rate_limit</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The most recent rate-limit snapshot, or <code>None</code> before any call.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">DEFAULT_BASE_URL</span><span class="p">,</span> <span class="n">status_base_url</span><span class="o">=</span><span class="n">DEFAULT_STATUS_BASE_URL</span><span class="p">,</span> <span class="n">api_key_header</span><span class="o">=</span><span class="n">DEFAULT_API_KEY_HEADER</span><span class="p">,</span> <span class="n">referer</span><span class="o">=</span><span class="n">DEFAULT_REFERER</span><span class="p">,</span> <span class="n">sdk_version</span><span class="o">=</span><span class="n">DEFAULT_SDK_VERSION</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">DEFAULT_TIMEOUT</span><span class="p">,</span> <span class="n">max_retries</span><span class="o">=</span><span class="n">DEFAULT_MAX_RETRIES</span><span class="p">,</span> <span class="n">http_client</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create an async client.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>api_key</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional Mayan API key. All endpoints work without one.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>base_url</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Price API base URL (quotes/tokens). Override for a proxy.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan._transport.DEFAULT_BASE_URL">DEFAULT_BASE_URL</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>status_base_url</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Explorer API base URL (swap status).</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan._transport.DEFAULT_STATUS_BASE_URL">DEFAULT_STATUS_BASE_URL</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>api_key_header</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Header name used to send <code>api_key</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_API_KEY_HEADER">DEFAULT_API_KEY_HEADER</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>referer</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Value sent in the required <code>referer</code> header on every
+request; set this to identify your integration.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_REFERER">DEFAULT_REFERER</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sdk_version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>sdkVersion</code> sent with quote/token requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_SDK_VERSION">DEFAULT_SDK_VERSION</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>timeout</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Per-request timeout in seconds.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_retries</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum number of 429 retries before raising
+:class:<code>~mayan.exceptions.MayanRateLimitError</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_MAX_RETRIES">DEFAULT_MAX_RETRIES</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>http_client</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="httpx.AsyncClient">AsyncClient</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An existing <code>httpx.AsyncClient</code> to reuse. When provided
+it is used as-is and conflicting <code>base_url</code>/<code>api_key</code>/
+<code>api_key_header</code> are ignored (with a warning).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.__aenter__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__aenter__</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enter the async context manager; returns <code>self</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.__aexit__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__aexit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Exit the async context manager, closing the HTTP client.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.close" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">close</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Close the underlying async HTTP client and release its connections.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.get_quotes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_quotes</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">from_token</span><span class="p">,</span> <span class="n">from_chain</span><span class="p">,</span> <span class="n">to_token</span><span class="p">,</span> <span class="n">to_chain</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">amount_base_units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">slippage_bps</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">referrer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">referrer_bps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gas_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destination_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">swift</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wormhole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fast_mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gasless</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">shuttle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extra_params</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch every candidate cross-chain route (<code>GET /v3/quote</code>).</p>
+<p>Async counterpart of :meth:<code>MayanClient.get_quotes</code>; see it for the full
+argument reference.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="QuoteResponse (mayan.models.QuoteResponse)" href="#mayan.QuoteResponse">QuoteResponse</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~mayan.QuoteResponse</code> with the candidate quotes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Neither <code>amount</code> nor <code>amount_base_units</code> was given.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The API rejected the request.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.get_quote" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_quote</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">from_token</span><span class="p">,</span> <span class="n">from_chain</span><span class="p">,</span> <span class="n">to_token</span><span class="p">,</span> <span class="n">to_chain</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">amount_base_units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">slippage_bps</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">referrer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">referrer_bps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gas_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destination_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">swift</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wormhole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fast_mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gasless</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">shuttle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extra_params</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the single best cross-chain quote (the headline call).</p>
+<p>Async counterpart of :meth:<code>MayanClient.get_quote</code>.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="Quote (mayan.models.Quote)" href="#mayan.Quote">Quote</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The best :class:<code>~mayan.Quote</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Neither <code>amount</code> nor <code>amount_base_units</code> was given.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The API rejected the request, or no route was found.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.get_tokens" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_tokens</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standard</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">non_portal</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch the supported-token catalog (<code>GET /v3/tokens</code>).</p>
+<p>Async counterpart of :meth:<code>MayanClient.get_tokens</code>.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="list">list</span>[<a class="autorefs autorefs-internal" title="Token (mayan.models.Token)" href="#mayan.Token">Token</a>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A mapping of chain name to the list of :class:<code>~mayan.Token</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The request failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.get_swap_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_swap_status</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">tx_hash</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Look up a swap/order by its source transaction hash.</p>
+<p>Async counterpart of :meth:<code>MayanClient.get_swap_status</code>.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="SwapStatus (mayan.models.SwapStatus)" href="#mayan.SwapStatus">SwapStatus</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~mayan.SwapStatus</code> describing the swap's current state.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The lookup failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.list_swaps" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">list_swaps</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">trader</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>List swaps from the explorer API (<code>GET /v3/swaps</code>).</p>
+<p>Async counterpart of :meth:<code>MayanClient.list_swaps</code>.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="SwapStatus (mayan.models.SwapStatus)" href="#mayan.SwapStatus">SwapStatus</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The matching :class:<code>~mayan.SwapStatus</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The request failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.AsyncMayanClient.poll_swap_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">poll_swap_status</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">tx_hash</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">max_interval</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Poll a swap's status until it is terminal (completed or refunded).</p>
+<p>Async counterpart of :meth:<code>MayanClient.poll_swap_status</code>. Awaits between
+polls so it does not block the event loop.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="SwapStatus (mayan.models.SwapStatus)" href="#mayan.SwapStatus">SwapStatus</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The terminal :class:<code>~mayan.SwapStatus</code> (completed or refunded).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TimeoutError">TimeoutError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>No terminal state was reached within <code>timeout</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A status request failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.MayanClient" class="doc doc-heading">
+            <code>MayanClient</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Synchronous client for the Mayan Finance API.</p>
+<p>All endpoints used here are public and keyless; an API key is optional. The
+client tracks any <code>ratelimit-*</code> response headers, pauses proactively when
+the quota is exhausted, and retries 429s with backoff.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>with MayanClient() as client:  # doctest: +SKIP
+...     quote = client.get_quote(
+...         amount="100",
+...         from_token="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",  # USDC (Solana)
+...         from_chain="solana",
+...         to_token="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",  # USDC (Ethereum)
+...         to_chain="ethereum",
+...     )
+...     quote.expected_amount_out</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="mayan.MayanClient.rate_limit" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">rate_limit</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The most recent rate-limit snapshot, or <code>None</code> before any call.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">DEFAULT_BASE_URL</span><span class="p">,</span> <span class="n">status_base_url</span><span class="o">=</span><span class="n">DEFAULT_STATUS_BASE_URL</span><span class="p">,</span> <span class="n">api_key_header</span><span class="o">=</span><span class="n">DEFAULT_API_KEY_HEADER</span><span class="p">,</span> <span class="n">referer</span><span class="o">=</span><span class="n">DEFAULT_REFERER</span><span class="p">,</span> <span class="n">sdk_version</span><span class="o">=</span><span class="n">DEFAULT_SDK_VERSION</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">DEFAULT_TIMEOUT</span><span class="p">,</span> <span class="n">max_retries</span><span class="o">=</span><span class="n">DEFAULT_MAX_RETRIES</span><span class="p">,</span> <span class="n">http_client</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create a client.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>api_key</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional Mayan API key. All endpoints work without one.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>base_url</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Price API base URL (quotes/tokens). Override for a proxy.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan._transport.DEFAULT_BASE_URL">DEFAULT_BASE_URL</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>status_base_url</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Explorer API base URL (swap status).</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan._transport.DEFAULT_STATUS_BASE_URL">DEFAULT_STATUS_BASE_URL</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>api_key_header</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Header name used to send <code>api_key</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_API_KEY_HEADER">DEFAULT_API_KEY_HEADER</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>referer</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Value sent in the required <code>referer</code> header on every
+request; set this to identify your integration.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_REFERER">DEFAULT_REFERER</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sdk_version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>sdkVersion</code> sent with quote/token requests; the API
+requires it to serve a valid response.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_SDK_VERSION">DEFAULT_SDK_VERSION</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>timeout</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Per-request timeout in seconds.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_retries</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum number of 429 retries before raising
+:class:<code>~mayan.exceptions.MayanRateLimitError</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="mayan.client.DEFAULT_MAX_RETRIES">DEFAULT_MAX_RETRIES</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>http_client</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="httpx.Client">Client</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An existing <code>httpx.Client</code> to reuse. When provided it
+is used as-is for both hosts and conflicting <code>base_url</code>/
+<code>api_key</code>/<code>api_key_header</code> are ignored (with a warning).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.__enter__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__enter__</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enter a context manager; returns <code>self</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.__exit__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__exit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Exit the context manager, closing the underlying HTTP client.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.close" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">close</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Close the underlying HTTP client and release its connections.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.get_quotes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_quotes</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">from_token</span><span class="p">,</span> <span class="n">from_chain</span><span class="p">,</span> <span class="n">to_token</span><span class="p">,</span> <span class="n">to_chain</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">amount_base_units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">slippage_bps</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">referrer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">referrer_bps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gas_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destination_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">swift</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wormhole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fast_mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gasless</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">shuttle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extra_params</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch every candidate cross-chain route (<code>GET /v3/quote</code>).</p>
+<p>Returns all quotes Mayan can offer (one per enabled protocol) plus the
+minimum SDK version. Use :meth:<code>get_quote</code> for just the best one.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>from_token</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source token address (SPL mint on Solana, contract on
+EVM/Sui; the zero address denotes native).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>from_chain</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source chain name, e.g. <code>solana</code> or <code>ethereum</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>to_token</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Destination token address.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>to_chain</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Destination chain name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>amount</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Amount to send in whole token units (e.g. <code>"100"</code> for 100
+USDC). Mutually exclusive with <code>amount_base_units</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>amount_base_units</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Amount to send in the source token's smallest unit
+(e.g. <code>"100000000"</code>). Mutually exclusive with <code>amount</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>slippage_bps</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Slippage tolerance in basis points, or <code>"auto"</code> to
+let Mayan choose. Defaults to <code>"auto"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;auto&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>referrer</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Referrer address credited with <code>referrer_bps</code> fees.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>referrer_bps</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Referrer fee in basis points.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>gas_drop</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Native gas to drop to the recipient on the destination
+chain, in whole units.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>destination_address</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Recipient address (defaults to the sender on the
+executing side).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>swift</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable Swift (auction) routes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>mctp</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable MCTP (Circle CCTP) routes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>wormhole</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable Wormhole routes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>fast_mctp</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable fast-MCTP routes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>gasless</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable gasless routes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>shuttle</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable Shuttle routes.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_params</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw query params to merge in (escape hatch
+for newer flags not yet modelled).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="QuoteResponse (mayan.models.QuoteResponse)" href="#mayan.QuoteResponse">QuoteResponse</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~mayan.QuoteResponse</code> with the candidate quotes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Neither <code>amount</code> nor <code>amount_base_units</code> was given.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The API rejected the request (e.g. 406 no route).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.get_quote" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_quote</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">from_token</span><span class="p">,</span> <span class="n">from_chain</span><span class="p">,</span> <span class="n">to_token</span><span class="p">,</span> <span class="n">to_chain</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">amount_base_units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">slippage_bps</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">referrer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">referrer_bps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gas_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destination_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">swift</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wormhole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fast_mctp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gasless</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">shuttle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extra_params</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the single best cross-chain quote (the headline call).</p>
+<p>Convenience wrapper over :meth:<code>get_quotes</code> that returns the first
+(best) candidate. See :meth:<code>get_quotes</code> for the full argument reference.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="Quote (mayan.models.Quote)" href="#mayan.Quote">Quote</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The best :class:<code>~mayan.Quote</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Neither <code>amount</code> nor <code>amount_base_units</code> was given.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The API rejected the request, or no route was found.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.get_tokens" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_tokens</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">standard</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">non_portal</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch the supported-token catalog (<code>GET /v3/tokens</code>).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain by name (e.g. <code>solana</code>). When omitted,
+tokens for all supported chains are returned.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>standard</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to a token standard (<code>erc20</code>, <code>native</code>,
+<code>spl</code> or <code>spl2022</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>non_portal</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>When <code>True</code>, exclude Portal (Wormhole-wrapped) tokens.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="list">list</span>[<a class="autorefs autorefs-internal" title="Token (mayan.models.Token)" href="#mayan.Token">Token</a>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A mapping of chain name to the list of :class:<code>~mayan.Token</code> objects</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="list">list</span>[<a class="autorefs autorefs-internal" title="Token (mayan.models.Token)" href="#mayan.Token">Token</a>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>supported on that chain.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The request failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.get_swap_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_swap_status</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">tx_hash</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Look up a swap/order by its source transaction hash.</p>
+<p>Hits the explorer API (<code>GET /v3/swap/trx/{tx_hash}</code>).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tx_hash</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The source-chain transaction hash that initiated the swap.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="SwapStatus (mayan.models.SwapStatus)" href="#mayan.SwapStatus">SwapStatus</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~mayan.SwapStatus</code> describing the swap's current state.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The lookup failed (e.g. unknown hash).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.list_swaps" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">list_swaps</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">trader</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>List swaps from the explorer API (<code>GET /v3/swaps</code>).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>trader</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter to swaps initiated by this address.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>limit</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum number of swaps to return.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>offset</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of swaps to skip (for pagination).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="SwapStatus (mayan.models.SwapStatus)" href="#mayan.SwapStatus">SwapStatus</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The matching :class:<code>~mayan.SwapStatus</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The request failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanClient.poll_swap_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">poll_swap_status</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">tx_hash</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">max_interval</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Poll a swap's status until it is terminal (completed or refunded).</p>
+<p>Repeatedly calls :meth:<code>get_swap_status</code>, sleeping between attempts with
+the delay doubling from <code>interval</code> up to <code>max_interval</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tx_hash</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The source-chain transaction hash to track.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>interval</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial delay between polls, in seconds.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5.0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>timeout</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum total time to wait, in seconds.</p>
+              </div>
+            </td>
+            <td>
+                  <code>300.0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_interval</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Cap on the (exponentially growing) poll delay.</p>
+              </div>
+            </td>
+            <td>
+                  <code>30.0</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="SwapStatus (mayan.models.SwapStatus)" href="#mayan.SwapStatus">SwapStatus</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The terminal :class:<code>~mayan.SwapStatus</code> (completed or refunded).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TimeoutError">TimeoutError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>No terminal state was reached within <code>timeout</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A status request failed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="MayanRateLimitError (mayan.exceptions.MayanRateLimitError)" href="#mayan.MayanRateLimitError">MayanRateLimitError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Rate limited after exhausting retries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.MayanAPIError" class="doc doc-heading">
+            <code>MayanAPIError</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="MayanError (mayan.exceptions.MayanError)" href="#mayan.MayanError">MayanError</a></code></p>
+
+
+
+        <p>The API returned a non-2xx response (other than rate limiting).</p>
+<p>A common case is HTTP 406 with <code>{"code": "ROUTE_NOT_FOUND"}</code> when no route
+exists for the requested swap; inspect :attr:<code>response_body</code> for the API's
+structured error.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="mayan.MayanAPIError.status_code">status_code</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The HTTP status code returned by the API.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="mayan.MayanAPIError.response_body">response_body</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The parsed JSON response body, or <code>None</code> if the body
+was empty or not valid JSON.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanAPIError.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">status_code</span><span class="p">,</span> <span class="n">response_body</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the error.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>message</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable error message (the API's <code>message</code>/<code>msg</code>
+field when available, otherwise a generated description).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>status_code</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The HTTP status code returned by the API.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>response_body</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The parsed JSON response body, if any.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.MayanError" class="doc doc-heading">
+            <code>MayanError</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="Exception">Exception</span></code></p>
+
+
+
+        <p>Base class for all errors raised by this library.</p>
+<p>Catch this to handle any mayan-py-originated failure regardless of kind. Note
+that low-level transport failures (timeouts, connection errors) propagate as
+the underlying :class:<code>httpx.HTTPError</code> subclasses, not as <code>MayanError</code>.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.MayanRateLimitError" class="doc doc-heading">
+            <code>MayanRateLimitError</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="MayanAPIError (mayan.exceptions.MayanAPIError)" href="#mayan.MayanAPIError">MayanAPIError</a></code></p>
+
+
+
+        <p>HTTP 429: rate limit exceeded.</p>
+<p>Raised once the client's retries are exhausted (see <code>max_retries</code>). The
+client retries 429s automatically before surfacing this.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="mayan.MayanRateLimitError.retry_after">retry_after</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Seconds to wait before retrying, derived from the
+<code>ratelimit-reset</code> or <code>retry-after</code> response header, or <code>None</code>
+if neither was present.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="mayan.MayanRateLimitError.status_code">status_code</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Always <code>429</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="mayan.MayanRateLimitError.response_body">response_body</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The parsed JSON response body, if any.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="mayan.MayanRateLimitError.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">429</span><span class="p">,</span> <span class="n">retry_after</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">response_body</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the error.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>message</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable error message.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>status_code</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The HTTP status code (defaults to <code>429</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>429</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>retry_after</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Seconds to wait before retrying, if the API advertised
+a reset window.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>response_body</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The parsed JSON response body, if any.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.Quote" class="doc doc-heading">
+            <code>Quote</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mayan.models._Model">_Model</span></code></p>
+
+
+
+        <p>A single cross-chain route returned inside a <code>GET /v3/quote</code> response.</p>
+<p>Mayan returns several candidate quotes (one per protocol it can route
+through); :attr:<code>type</code> identifies the protocol, e.g. <code>MCTP</code>, <code>SWIFT</code> or
+<code>WH</code> (Wormhole). Amounts come in both human-readable (<code>expected_amount_out</code>)
+and raw smallest-unit (<code>expected_amount_out_base_units</code>) forms.</p>
+<p>Many additional protocol-specific fields are present on the wire and remain
+accessible via attribute access thanks to <code>extra="allow"</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.QuoteResponse" class="doc doc-heading">
+            <code>QuoteResponse</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mayan.models._Model">_Model</span></code></p>
+
+
+
+        <p>The full body of <code>GET /v3/quote</code>: the candidate quotes plus metadata.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.SwapStatus" class="doc doc-heading">
+            <code>SwapStatus</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mayan.models._Model">_Model</span></code></p>
+
+
+
+        <p>A swap/order as returned by the explorer API (<code>GET /v3/swap/trx/{hash}</code>).</p>
+<p>:attr:<code>status</code> is the fine-grained protocol state (e.g.
+<code>INITIATED_ON_EVM_MCTP</code>, <code>REDEEMED_ON_EVM_WITH_FEE</code>, <code>ORDER_SETTLED</code>),
+while :attr:<code>client_status</code> is the coarse lifecycle state used for polling:
+<code>INPROGRESS</code>, <code>COMPLETED</code> or <code>REFUNDED</code>. Prefer the :attr:<code>is_completed</code>,
+:attr:<code>is_refunded</code> and :attr:<code>is_terminal</code> helpers over comparing strings.</p>
+<p>The on-the-wire object carries dozens of protocol-specific fields; the ones
+not modelled here remain accessible via attribute access (<code>extra="allow"</code>).</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="mayan.SwapStatus.is_completed" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">is_completed</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>True when the swap completed successfully (<code>clientStatus == COMPLETED</code>).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="mayan.SwapStatus.is_refunded" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">is_refunded</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>True when the swap was refunded (<code>clientStatus == REFUNDED</code>).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="mayan.SwapStatus.is_terminal" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">is_terminal</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>True once the swap reached a final state (completed or refunded).</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="mayan.Token" class="doc doc-heading">
+            <code>Token</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mayan.models._Model">_Model</span></code></p>
+
+
+
+        <p>A token on one of Mayan's supported chains (Solana, EVM or Sui).</p>
+<p>The same token is addressed differently per ecosystem: <code>mint</code> carries the
+Solana SPL mint while <code>contract</code> carries the EVM/Sui contract address (for
+Solana tokens the two coincide). <code>chain_id</code> is Mayan's internal numeric id
+and <code>w_chain_id</code> the corresponding Wormhole chain id.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
