@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/robertruben98/mayan-py/actions/workflows/ci.yml/badge.svg)](https://github.com/robertruben98/mayan-py/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/mayan-py.svg)](https://pypi.org/project/mayan-py/)
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://robertruben98.github.io/mayan-py/)
 [![Python versions](https://img.shields.io/pypi/pyversions/mayan-py.svg)](https://pypi.org/project/mayan-py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/robertruben98/mayan-py/blob/main/LICENSE)
 
