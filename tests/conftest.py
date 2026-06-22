@@ -93,7 +93,9 @@ QUOTE_RESPONSE: dict[str, Any] = {
             "route": None,
         }
     ],
-    "minimumSdkVersion": "9_0_0",
+    # The live price API returns this as a JSON array of version components,
+    # NOT a string (verified live: [7, 0, 0]).
+    "minimumSdkVersion": [7, 0, 0],
 }
 
 # A real /v3/swap/trx/{hash} response (MCTP fast bridge, completed), trimmed.

@@ -130,7 +130,8 @@ def test_get_quotes_returns_full_response() -> None:
         to_chain="ethereum",
     )
     assert isinstance(resp, QuoteResponse)
-    assert resp.minimum_sdk_version == "9_0_0"
+    # The fixture mirrors the live array form ([7, 0, 0]) -> normalized string.
+    assert resp.minimum_sdk_version == "7.0.0"
     assert len(resp.quotes) == 1
 
 

@@ -27,9 +27,30 @@ def test_token_keeps_unknown_extra_fields() -> None:
 
 def test_quote_response_parses_list_and_min_sdk() -> None:
     resp = QuoteResponse.model_validate(QUOTE_RESPONSE)
-    assert resp.minimum_sdk_version == "9_0_0"
+    # The live API sends minimumSdkVersion as a list ([7, 0, 0]); it is
+    # normalized to a dotted version string.
+    assert resp.minimum_sdk_version == "7.0.0"
     assert len(resp.quotes) == 1
     assert isinstance(resp.quotes[0], Quote)
+
+
+def test_quote_response_minimum_sdk_version_accepts_list() -> None:
+    # Regression: the price API returns minimumSdkVersion as a JSON array of
+    # version components, not a string. Parsing must not raise (this crashed
+    # get_quote/get_quotes against production before the fix).
+    resp = QuoteResponse.model_validate({"quotes": [], "minimumSdkVersion": [7, 0, 0]})
+    assert resp.minimum_sdk_version == "7.0.0"
+
+
+def test_quote_response_minimum_sdk_version_accepts_string() -> None:
+    # A plain string is still accepted unchanged (forward/backward compatible).
+    resp = QuoteResponse.model_validate({"quotes": [], "minimumSdkVersion": "9_0_0"})
+    assert resp.minimum_sdk_version == "9_0_0"
+
+
+def test_quote_response_minimum_sdk_version_absent() -> None:
+    resp = QuoteResponse.model_validate({"quotes": []})
+    assert resp.minimum_sdk_version is None
 
 
 def test_quote_headline_fields() -> None:

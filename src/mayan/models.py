@@ -13,9 +13,9 @@ so Solana, EVM and Sui values all round-trip without precision loss.
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class _Model(BaseModel):
@@ -172,8 +172,26 @@ class QuoteResponse(_Model):
     minimum_sdk_version: Optional[str] = Field(
         default=None,
         alias="minimumSdkVersion",
-        description="Lowest SDK/client version the API will still serve.",
+        description=(
+            "Lowest SDK/client version the API will still serve, as a dotted "
+            "string (e.g. ``7.0.0``). The API sends this as a list of version "
+            "components (``[7, 0, 0]``); it is normalized to a string here."
+        ),
     )
+
+    @field_validator("minimum_sdk_version", mode="before")
+    @classmethod
+    def _normalize_minimum_sdk_version(cls, value: Any) -> Any:
+        """Join the API's ``[7, 0, 0]`` array form into a dotted version string.
+
+        The live price API returns ``minimumSdkVersion`` as a JSON array of
+        version components rather than a string; passing a list straight to a
+        ``str`` field raises a ``ValidationError``. A plain string (or ``None``)
+        is returned unchanged.
+        """
+        if isinstance(value, (list, tuple)):
+            return ".".join(str(part) for part in value)
+        return value
 
 
 class SwapStatus(_Model):
