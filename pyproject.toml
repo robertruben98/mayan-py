@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mayan-py"
+version = "0.1.0"
+description = "Python client for the Mayan Finance API: cross-chain swaps and bridging across Solana, EVM and Sui."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Robert Ruben" }]
+keywords = [
+    "mayan",
+    "mayan-finance",
+    "bridge",
+    "cross-chain",
+    "swap",
+    "solana",
+    "ethereum",
+    "sui",
+    "defi",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.24",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.20",
+    "mypy>=1.8",
+    "ruff>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/robertruben98/mayan-py"
+Documentation = "https://docs.mayan.finance"
+Repository = "https://github.com/robertruben98/mayan-py"
+Issues = "https://github.com/robertruben98/mayan-py/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mayan"]
+
+[tool.ruff]
+line-length = 100
+# Tooling targets 3.10 (local mypy refuses 3.9), but the package supports the
+# 3.9 runtime floor. Annotations are resolved at runtime by pydantic, so they
+# use typing.Optional/Union rather than PEP 604 `X | None` (which raises on 3.9).
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W", "C4", "SIM"]
+# UP007/UP045 push PEP 604 unions; we deliberately keep Optional/Union so the
+# runtime-evaluated annotations work on Python 3.9.
+ignore = ["UP007", "UP045"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = "respx.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: live network tests (deselected by default; run with -m integration)",
+]
+addopts = "-m 'not integration'"
+asyncio_mode = "auto"
