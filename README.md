@@ -8,7 +8,7 @@
 
 A typed Python client for the [Mayan Finance API](https://docs.mayan.finance)
 — cross-chain swaps and bridging across **Solana, EVM chains and Sui** (and more:
-Aptos, Sui, Base, Arbitrum, Optimism, Polygon, BNB, Avalanche, Linea, Sonic…).
+Aptos, Base, Arbitrum, Optimism, Polygon, BNB, Avalanche, Linea, Sonic…).
 
 The headline call: `get_quote()` returns the best cross-chain route — expected
 output, fees and ETA — across all of Mayan's protocols (MCTP, Swift, Wormhole).
